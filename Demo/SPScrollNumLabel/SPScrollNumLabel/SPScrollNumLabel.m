@@ -124,7 +124,7 @@
 }
 
 - (void)seprateNumberToStringWithTarget:(NSInteger)target operateHandler:(void (^) (NSMutableArray<NSString *> *sepStrArr,NSMutableArray<UILabel *> *sepLabelArr)) handler{
-    NSString *originNumStr = [NSString stringWithFormat:@"%ld",(long)target];
+    NSString *originNumStr = [NSString stringWithFormat:@"%ld",target];
     NSMutableArray <NSString *> * sepStrArr = [[NSMutableArray alloc] initWithCapacity:originNumStr.length];
     NSMutableArray <UILabel *> * sepLabelArr = [[NSMutableArray alloc] initWithCapacity:sepStrArr.count];
     for (NSInteger i = 0 ; i < originNumStr.length; i ++) {
@@ -187,7 +187,7 @@
     }
     _targetNumber = targetNumber;
     [self operateNumberWithTarget:targetNumber];
-    [self setText:[NSString stringWithFormat:@"%ld",(long)targetNumber]];
+    [self setText:[NSString stringWithFormat:@"%ld",targetNumber]];
 }
 
 @end

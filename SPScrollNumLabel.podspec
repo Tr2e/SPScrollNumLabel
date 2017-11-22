@@ -1,7 +1,9 @@
 Pod::Spec.new do |s|
 
   s.name         = "SPScrollNumLabel"
+
   s.version      = "0.0.1"
+
   s.summary      = "For Number Scroll Animation with UILabel in iOS"
 
   s.description  = <<-DESC
@@ -9,12 +11,19 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/Tr2e/SPScrollNumLabel"
+
   s.license      = { :type => "MIT", :file => "LICENSE" }
+
   s.author       = { "Tr2e" => "tr2e@sina.com" }
+
   s.platform     = :ios,'8.0'
 
   s.source       = { :git => "https://github.com/Tr2e/SPScrollNumLabel.git", :tag => "#{s.version}" }
+
   s.source_files = "SPScrollNumLabel/*.{h,m}"
+
   s.framework    = 'UIKit'
+
   s.requires_arc = true
+  
 end
