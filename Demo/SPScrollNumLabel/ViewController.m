@@ -16,6 +16,7 @@
 @property (weak, nonatomic) SPScrollNumLabel *centerDetectLabel;
 @property (weak, nonatomic) IBOutlet SPScrollNumLabel *testLabel;
 @property (weak, nonatomic) IBOutlet SPScrollNumLabel *defaultLabel;
+
 @end
 
 @implementation ViewController
@@ -48,6 +49,7 @@
     centerLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     centerLabel.font = [UIFont systemFontOfSize:35 weight:UIFontWeightThin];
     centerLabel.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
+    centerLabel.text = @"998";
     
     // 如果想当做普通的UILabel用 比如特殊值"1千"等 打开isCommonLabel 直接按照UILabel的使用即可
     SPScrollNumLabel *commonLabel = [[SPScrollNumLabel alloc] init];
@@ -83,14 +85,12 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     self.scrollnumLabel.targetNumber = 404;
     self.defaultLabel.targetNumber = 400;
-    self.centerDetectLabel.targetNumber = 1024;
+    self.centerDetectLabel.text = @"404";
     _touchTag += 1;
     if (_touchTag%2) {
-        self.testLabel.isCommonLabel = YES;
-        self.testLabel.text = @"哈哈哈哈哈哈";
+        self.testLabel.text = @"我也是^(*￣(oo)￣)^";
     }else{
-        self.testLabel.isCommonLabel = NO;
-        self.testLabel.targetNumber = 999;
+        self.testLabel.text = @"我是一段文字";
     }
 }
 

@@ -29,10 +29,14 @@
 }
 
 - (void)layoutSubviews{
+    [super layoutSubviews];
+}
+
+- (void)willMoveToWindow:(UIWindow *)newWindow{
+    [super willMoveToWindow:newWindow];
     if (!_targetNumber && !self.isCommonLabel) {
         self.targetNumber = 0;
     }
-    [super layoutSubviews];
 }
 
 - (void)initailizeConfig{
@@ -52,9 +56,9 @@
     self.targetNumber -= decreasedNum;
 }
 
-- (void)operateNumberWithTarget:(NSInteger )targetNumber{
+- (void)operateWithTargetString:(NSString *)string{
     __weak typeof(self) ws = self;
-    [self seprateNumberToStringWithTarget:targetNumber operateHandler:^(NSArray *sepStrArr, NSArray *sepLabelArr) {
+    [self seprateStringToSingleWithTarget:string operateHandler:^(NSMutableArray<NSString *> *sepStrArr, NSMutableArray<UILabel *> *sepLabelArr) {
         [ws showScrollAnimiationWithSepStrArr:sepStrArr sepLableArr:sepLabelArr];
     }];
 }
@@ -76,10 +80,12 @@
                 CGRect frame = label.frame;
                 CGRect targetFrame = CGRectOffset(frame, 0, (increase?1:-1)*label.frame.size.height);
                 label.frame = targetFrame;
+                label.alpha = 0;
                 [UIView animateWithDuration:self.animateDuration?self.animateDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                     hisLabel.frame = hisTargetFrame;
                     label.frame = frame;
                     hisLabel.alpha = 0;
+                    label.alpha = 1;
                 } completion:^(BOOL finished) {
                     [hisLabel removeFromSuperview];
                 }];
@@ -89,9 +95,11 @@
         }else{
             UILabel *label = sepLabelArr[targetIndex];
             CGRect frame = label.frame;
+            label.alpha = 0;
             label.frame = CGRectOffset(frame, 0, -frame.size.height);
             [UIView animateWithDuration:self.animateDuration?self.animateDuration:0.25 delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 label.frame = frame;
+                label.alpha = 1;
             } completion:nil];
         }
     }
@@ -123,13 +131,12 @@
     return label;
 }
 
-- (void)seprateNumberToStringWithTarget:(NSInteger)target operateHandler:(void (^) (NSMutableArray<NSString *> *sepStrArr,NSMutableArray<UILabel *> *sepLabelArr)) handler{
-    NSString *originNumStr = [NSString stringWithFormat:@"%ld",target];
-    NSMutableArray <NSString *> * sepStrArr = [[NSMutableArray alloc] initWithCapacity:originNumStr.length];
+- (void)seprateStringToSingleWithTarget:(NSString *)target operateHandler:(void (^) (NSMutableArray<NSString *> *sepStrArr,NSMutableArray<UILabel *> *sepLabelArr)) handler{
+    NSMutableArray <NSString *> * sepStrArr = [[NSMutableArray alloc] initWithCapacity:target.length];
     NSMutableArray <UILabel *> * sepLabelArr = [[NSMutableArray alloc] initWithCapacity:sepStrArr.count];
-    for (NSInteger i = 0 ; i < originNumStr.length; i ++) {
+    for (NSInteger i = 0 ; i < target.length; i ++) {
         // str
-        NSString *subStr = [originNumStr substringWithRange:NSMakeRange(i, 1)];
+        NSString *subStr = [target substringWithRange:NSMakeRange(i, 1)];
         [sepStrArr addObject:subStr];
         // label
         UILabel *label = [self createLabelWithString:subStr];
@@ -179,6 +186,12 @@
     if (self.textColor == [UIColor clearColor] && self.isCommonLabel) {
         self.textColor = self.sp_textColor;
     }
+    if ([self validateValueIsTotalNumber:text]) {
+        _targetNumber = text.integerValue;
+    }
+    if (!self.isCommonLabel) {
+        [self operateWithTargetString:text];
+    }
 }
 
 - (void)setTargetNumber:(NSInteger)targetNumber{
@@ -186,8 +199,13 @@
         return;
     }
     _targetNumber = targetNumber;
-    [self operateNumberWithTarget:targetNumber];
     [self setText:[NSString stringWithFormat:@"%ld",targetNumber]];
+}
+
+- (BOOL)validateValueIsTotalNumber:(NSString *)text{
+    NSString *reg = @"^-?\\d*$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg];
+    return [predicate evaluateWithObject:text];
 }
 
 @end

@@ -1,8 +1,12 @@
 # SPScrollNumLabel
 
+**V 0.0.1**
 ![项目应用效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/timelineDemo.gif)
 
 ![Demo效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/Demo.gif)
+
+**V 0.0.2**
+![Text效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/text.gif)
 
 ## Api
 
@@ -22,7 +26,15 @@
 * 数字增加方法
 * 数字减少方法
 
+
 ## 设置
+
+1. **对文字及字体颜色等常见参数的设置，直接通过UILabel的参数设置即可.**
+2. **输入数字支持targetNum及text两种属性输入**
+3. **targetNumber及text的输入，都请放在字体属性设置完成后**
+
+*注意点：如果输入的文字为中文，请不要设置Label的backgroundColor属性，否则无法正常显示*
+
 
 ### 纯代码
 
@@ -43,8 +55,6 @@ num.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
 num.font = [UIFont systemFontOfSize:40 weight:UIFontWeightBold];
 num.backgroundColor = [[UIColor purpleColor] colorWithAlphaComponent:0.4];
     
-// 属性配置完成后，赋值 默认为0
-num.targetNumber = 512;
     
 // 如果采用center赋值 需要设置是否中心点优先
 SPScrollNumLabel *centerLabel = [[SPScrollNumLabel alloc] init];
@@ -53,6 +63,8 @@ centerLabel.centerPointPriority = YES;
 centerLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
 centerLabel.font = [UIFont systemFontOfSize:35 weight:UIFontWeightThin];
 centerLabel.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
+// 属性配置完成后，赋值 默认为0
+centerLabel.text = @"998";
     
 // 如果想当做普通的UILabel用 比如特殊值"1千"等 打开isCommonLabel 直接按照UILabel的使用即可
 SPScrollNumLabel *commonLabel = [[SPScrollNumLabel alloc] init];
