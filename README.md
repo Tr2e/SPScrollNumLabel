@@ -1,5 +1,6 @@
 # SPScrollNumLabel
 
+![Demo效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/Demo.gif)
 
 **V 0.0.2**
 
@@ -9,8 +10,6 @@
 **V 0.0.1**
 
 ![项目应用效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/timelineDemo.gif)
-
-![Demo效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/Demo.gif)
 
 
 ## Api
