@@ -1,12 +1,18 @@
 # SPScrollNumLabel
 
-**Ver 0.0.1**
+**项目中应用效果**
+
 ![项目应用效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/timelineDemo.gif)
+
+**Ver 0.0.2**
+
+![Text效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/text.gif)
+
+
+**Ver 0.0.1**
 
 ![Demo效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/Demo.gif)
 
-**Ver 0.0.2**
-![Text效果](https://github.com/Tr2e/SPScrollNumLabel/raw/master/Picture/text.gif)
 
 ## Api
 
