@@ -1,4 +1,7 @@
 # SPScrollNumLabel
+![Version](https://img.shields.io/cocoapods/v/SPScrollNumLabel.svg)
+![](https://img.shields.io/badge/language-objc-orange.svg)	
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 **项目中应用效果**
 
