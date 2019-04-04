@@ -2,6 +2,7 @@
 ![Version](https://img.shields.io/cocoapods/v/SPScrollNumLabel.svg)
 ![](https://img.shields.io/badge/language-objc-orange.svg)	
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 
 **项目中应用效果**
 
